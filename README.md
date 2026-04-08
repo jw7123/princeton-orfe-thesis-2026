@@ -142,7 +142,7 @@ If you use or extend this code, please cite the thesis:
 > Operations Research and Financial Engineering, Princeton University,
 > 2026.
 
-## Licens
+## License
 
 Released under the MIT License; see `LICENSE` for the full text.
 
