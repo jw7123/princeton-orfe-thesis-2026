@@ -150,11 +150,3 @@ Released under the MIT License; see `LICENSE` for the full text.
 
 Questions and bug reports can be directed to the author at
 jw7123@princeton.edu.
-
-This code is released for academic use. See `LICENSE` (or contact the
-author) for details.
-
-## Contact
-
-Questions and bug reports can be directed to the author at
-jw7123@princeton.edu.
