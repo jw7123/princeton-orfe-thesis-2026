@@ -4,7 +4,7 @@ This repository contains the code accompanying the senior thesis
 **"Inside the Huddle: Reproducing ESPN Player Projections Using Public Data"** by Jim Williams, submitted to the Department of
 Operations Research and Financial Engineering at Princeton University in
 April 2026, advised by Professor Alain Kornhauser.
- 
+
 ## Overview
 
 The project builds per-position XGBoost models (RB, WR, TE) that predict
@@ -25,7 +25,8 @@ checkout.
 
 ```
 .
-├── README.md                  This file
+├── README.md                  This file.
+├── LICENSE                    MIT license.
 ├── model_espn_ensemble.R      Main model script. Builds the feature
 │                              panel from nflreadr/nflfastR and ESPN,
 │                              tunes per-position XGBoost models,
@@ -42,6 +43,17 @@ checkout.
 ├── make_figures.R             Generates the six figures used in the
 │                              thesis from the CSV outputs of the two
 │                              model scripts.
+├── fig1_weekly_mae.png            Weekly MAE across the 2025 season.
+├── fig2_feature_importance.png    Top-10 features by position.
+├── fig3_pred_vs_actual.png        Predicted vs. actual scatter.
+├── fig4_quantile_calibration.png  80% prediction interval calibration.
+├── fig5_week18_case_study.png     Week 18 case study.
+├── fig6_tier_error_bars.png       Tier-level MAE with bootstrap CIs.
+├── session_info.txt           Output of sessionInfo() captured after
+│                              a successful run of model_espn_ensemble.R,
+│                              documenting the exact R version and
+│                              package versions used to produce the
+│                              thesis results.
 └── .gitignore                 Excludes generated CSVs, R session files,
                                and editor caches.
 ```
@@ -130,7 +142,14 @@ If you use or extend this code, please cite the thesis:
 > Operations Research and Financial Engineering, Princeton University,
 > 2026.
 
-## License
+## Licens
+
+Released under the MIT License; see `LICENSE` for the full text.
+
+## Contact
+
+Questions and bug reports can be directed to the author at
+jw7123@princeton.edu.
 
 This code is released for academic use. See `LICENSE` (or contact the
 author) for details.
