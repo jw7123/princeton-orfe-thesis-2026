@@ -1,9 +1,9 @@
 # NFL Fantasy Football Projection: An XGBoost-Based Approach
 
 This repository contains the code accompanying the senior thesis
-**"[THESIS TITLE]"** by Jim [LAST NAME], submitted to the Department of
+**"Inside the Huddle: Reproducing ESPN Player Projections Using Public Data"** by Jim Williams, submitted to the Department of
 Operations Research and Financial Engineering at Princeton University in
-[MONTH] 2026, advised by Professor Alain Kornhauser.
+April 2026, advised by Professor Alain Kornhauser.
 
 ## Overview
 
@@ -126,7 +126,7 @@ stable across runs.
 
 If you use or extend this code, please cite the thesis:
 
-> Jim [LAST NAME]. *[Thesis title]*. Senior thesis, Department of
+> Jim Williams. *Inside the Huddle: Reproducing ESPN Player Projections Using Public Data*. Senior thesis, Department of
 > Operations Research and Financial Engineering, Princeton University,
 > 2026.
 
@@ -138,4 +138,4 @@ author) for details.
 ## Contact
 
 Questions and bug reports can be directed to the author at
-[your Princeton email].
+jw7123@princeton.edu.
