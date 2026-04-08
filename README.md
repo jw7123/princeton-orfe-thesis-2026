@@ -4,7 +4,7 @@ This repository contains the code accompanying the senior thesis
 **"Inside the Huddle: Reproducing ESPN Player Projections Using Public Data"** by Jim Williams, submitted to the Department of
 Operations Research and Financial Engineering at Princeton University in
 April 2026, advised by Professor Alain Kornhauser.
-
+ 
 ## Overview
 
 The project builds per-position XGBoost models (RB, WR, TE) that predict
