@@ -116,31 +116,54 @@ p4 <- ggplot(calib, aes(x = bin, y = frac, fill = region)) +
 ggsave("Figures/fig4_quantile_calibration.png", p4, width = 7, height = 4.2, dpi = 300)
 
 # ============================================================
-# FIGURE 5 — Week 18 case study: top-30 ranking comparison
+# FIGURE 5 — Week 18 case study: ESPN top-30 projected players
 # ============================================================
-wk18 <- ev %>% filter(week == 18) %>%
-  arrange(desc(fantasy_ppr)) %>%
-  mutate(actual_rank = row_number()) %>%
-  filter(actual_rank <= 30) %>%
+
+wk18_all <- ev %>%
+  filter(
+    week == 18,
+    !is.na(espn_proj),
+    !is.na(model_pred),
+    !is.na(fantasy_ppr)
+  ) %>%
   mutate(
-    model_rank = rank(-model_pred, ties.method = "min"),
-    espn_rank  = rank(-espn_proj,  ties.method = "min"),
+    actual_rank = rank(-fantasy_ppr, ties.method = "min"),
+    model_rank  = rank(-model_pred,  ties.method = "min"),
+    espn_rank   = rank(-espn_proj,   ties.method = "min")
+  )
+
+wk18 <- wk18_all %>%
+  arrange(espn_rank, desc(fantasy_ppr), desc(model_pred)) %>%
+  filter(espn_rank <= 30) %>%
+  mutate(
     label = paste0(player_name, " (", position, ")")
   )
 
 wk18_long <- wk18 %>%
-  select(label, actual_rank, Standalone = model_pred, ESPN = espn_proj, fantasy_ppr) %>%
+  select(label, espn_rank, Standalone = model_pred, ESPN = espn_proj, fantasy_ppr) %>%
   pivot_longer(c(Standalone, ESPN), names_to = "Model", values_to = "Prediction")
 
-p5 <- ggplot(wk18_long, aes(x = Prediction, y = reorder(label, -actual_rank))) +
+p5 <- ggplot(wk18_long, aes(x = Prediction, y = reorder(label, -espn_rank))) +
   geom_point(aes(color = Model, shape = Model), size = 2.5) +
   geom_point(aes(x = fantasy_ppr), color = "black", shape = 4, size = 2.5, stroke = 1) +
   scale_color_manual(values = c("Standalone" = "#1f77b4", "ESPN" = "#d62728")) +
-  labs(x = "Points (projected = colored, actual = ×)", y = NULL,
-       title = "Week 18, 2025: top-30 actual scorers",
-       subtitle = "Standalone MAE 2.545 vs. ESPN 3.088 — the largest weekly margin") +
+  labs(
+    x = "Points (projected = colored, actual = ×)",
+    y = NULL,
+    title = "Week 18, 2025: ESPN top-30 projected skill-position players",
+    subtitle = "Week-wide MAE: Standalone 2.545 vs. ESPN 3.088 — the largest weekly margin"
+  ) +
   thesis_theme
+
 ggsave("Figures/fig5_week18_case_study.png", p5, width = 7.5, height = 7.5, dpi = 300)
+
+wk18 %>%
+  summarise(
+    standalone_mean_signed_error = mean(model_pred - fantasy_ppr),
+    espn_mean_signed_error = mean(espn_proj - fantasy_ppr),
+    standalone_mae_top30 = mean(abs(model_pred - fantasy_ppr)),
+    espn_mae_top30 = mean(abs(espn_proj - fantasy_ppr))
+  )
 
 # ============================================================
 # FIGURE 6 — Tier-level MAE with error bars (bootstrap 95% CI)
