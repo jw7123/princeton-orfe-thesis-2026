@@ -35,6 +35,12 @@ library(xml2)
 library(lubridate)
 library(xgboost)
 
+# -- Reproducibility seed --
+# Set before any random number generation (random search, CV folds, etc.)
+# A fresh R session is required for deterministic results; sourcing this
+# script twice in the same session will advance the RNG state.
+set.seed(47)
+
 # -- 2. Configuration -----------------------------------------
 
 Sys.setenv(ESPN_S2 = "AEACephTYe0pI3CkugRRVQjp%2FpqW%2BxnUJBSfBMb1A50r81oL6U7WmRp6OBKWHFC5FJSDpGwVXMb8fHNMqV1RQcr7tu%2FHLPa1l2HHLt%2BWO0%2FCA9S1fIVfll94zpEGzO%2BMnVtMrk6Ewmcw2YlxOdyhDIMU%2B67Uq8Ufhs30tIortnNAvAhfSDtwaAsGj9YCM816aW7wquRT2P0CqeqyY7R2NnjSGDIUiVP3Dj2BwmIQ%2FIEfQ2cg5NCgL6IxkAtxq89nrGecECF%2BE8o5fe2yh%2BsxHyvNDYT3HGvX8rcBAlyUw1xDoxB9OudOvP2nWvRT2x9MVkM%3D")
