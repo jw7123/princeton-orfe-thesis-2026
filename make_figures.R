@@ -215,7 +215,7 @@ p6 <- ggplot(tier_summary, aes(x = tier, y = mae, color = Model)) +
     x = "Player tier (by ESPN projection)",
     y = "MAE (PPR points)",
     title = "2025 MAE by player tier, with 95% bootstrap intervals",
-    subtitle = "Model gains over ESPN concentrate in starter and flex tiers"
+    subtitle = "Model gains over ESPN concentrate in different tiers"
   ) +
   thesis_theme
 
