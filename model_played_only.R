@@ -1,3 +1,4 @@
+# Portions of this code were developed with assistance from Anthropic's Claude.
 # ============================================================
 # Fantasy Football Projection Model — Played-Only Training
 # ============================================================
