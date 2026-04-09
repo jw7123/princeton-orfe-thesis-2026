@@ -1,3 +1,4 @@
+# Portions of this code were developed with assistance from Anthropic's Claude.
 # make_figures.R — generates all 6 thesis figures
 library(ggplot2)
 library(dplyr)
